@@ -1,0 +1,27 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+</script>
+<div>
+  <img src="uploads/image.jpg" />
+  <span id="text" style="font-size: 4em; color: indianred;">Sin alertas</span>
+</div>
+
+
+<script>
+  $.ajax({
+    url: 'http://localhost:3000/flag',
+    type: 'GET',
+    success: function(flag) {
+      console.log(flag)
+      if (flag) {
+        $('#text').text('Posible metástasis');
+      } else {
+        $('#text').text('Sin alertas');
+      }
+    }
+  });
+
+  setInterval(function() {
+    location.reload()
+
+  }, 3000);
+</script>
